@@ -1,0 +1,30 @@
+body{
+    background: darkgrey;
+}
+.outer-box{
+    width: 854px;
+    background: white;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.logo-box{
+    text-align: center;
+    padding-top: 20px;
+}
+.logo-box img{
+    width: 80px;
+    height: 60px;
+}
+.form-box{
+    width: 300px;
+    margin: 0 auto;
+}
+.input-group-addon{
+    overflow: hidden;
+    padding: 0;
+}
+.captcha-img{
+    width: 95px;
+    height: 33px;
+    cursor: pointer;
+}

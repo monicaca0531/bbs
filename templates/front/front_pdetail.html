@@ -1,0 +1,63 @@
+{% extends 'front/front_base.html' %}
+
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ static("front/css/front_pdetail.css") }}">
+    <script src="{{ static("ueditor/ueditor.config.js") }}"></script>
+    <script src="{{ static("ueditor/ueditor.all.js") }}"></script>
+    <script src="{{ static("front/js/front_pdetail.js") }}"></script>
+{% endblock %}
+
+{% block main %}
+    <div class="main-left">
+        <div class="post-container">
+            <h2>{{ post.title }}</h2>
+            <p class="post-info">
+                <span>发表时间：{{ post.create_time }}</span>
+                <span>作者：{{ post.author.username }}</span>
+                <span>所属模板：{{ post.board.name }}</span>
+                <span>阅读数：0</span>
+                <span>评论数：0</span>
+            </p>
+            <article class="post-content">
+                {{ post.content|safe }}
+            </article>
+        </div>
+        <div class="comment-list-group">
+            <h3>评论列表</h3>
+            <ul class="comment-list">
+                {% for comment in post.comments %}
+                    <li>
+                        <div class="avatar-group">
+                            <img src="{{ comment.author.avatar or static("images/logo.png") }}" alt="">
+                        </div>
+                        <div class="comment-content">
+                            <p class="comment-info">
+                                <span>{{ comment.author.username }}</span>
+                                <span>{{ comment.create_time }}</span>
+                            </p>
+                            <p class="comment-txt">
+                                {{ comment.content|safe }}
+                            </p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="comment-apost-group">
+            <h3>发表评论</h3>
+            <script id="apost-ue" type="text/plain" style="height: 200px"></script>
+            <button class="btn btn-info" id="comment-btn" data-post-id="{{ post.id }}">发表评论</button>
+        </div>
+    </div>
+    <div class="main-right">
+        <div class="post-avatar">
+            <img src="{{ post.author.avatar or static("images/logo.png") }}" alt="">
+        </div>
+        <p class="author-info">{{ post.author.username }}</p>
+        <button class="btn btn-warning">个人中心</button>
+    </div>
+{% endblock %}

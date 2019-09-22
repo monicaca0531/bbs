@@ -1,0 +1,33 @@
+{% extends 'cms/cms_base.html' %}
+{% from 'common/_macros.html' import static %}
+
+{% block title -%}
+    修改邮箱
+{%- endblock %}
+
+{% block page_title -%}
+    {{ self.title() }}
+{%- endblock %}
+
+{% block head %}
+    <script src="{{ static("cms/js/cms_emailcaptcha.js") }}"></script>
+{% endblock %}
+
+{% block main_content %}
+    <form action="" method="post">
+        <div class="form-container">
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="newemail" placeholder="新邮箱">
+                    <span class="input-group-addon" id="sendCaptcha" style="cursor: pointer">发送验证码</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="captcha" placeholder="请输入验证码">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" id="submit">立即修改</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
